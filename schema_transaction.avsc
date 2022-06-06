@@ -1,0 +1,13 @@
+
+{"namespace": "transaction.avro",
+ "type": "record",
+ "name": "Transaction",
+ "fields": [
+     {"name": "client_code", "type":["string", "null"]},
+     {"name": "agency",  "type": ["string", "null"]},
+     {"name": "operation_value", "type": ["float", "null"]},
+     {"name": "operation_type", "type": "string"},
+     {"name": "date", "type": "string"},
+     {"name": "account_balance", "type": "float"}
+ ]
+}
