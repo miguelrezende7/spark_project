@@ -6,6 +6,12 @@
 # producer.flush()
 
 
+#iniciar zookeeper
+# ./zookeeper-server-start.sh ../config/zookeeper.properties
+
+#iniciar broker
+# ./kafka-server-start.sh ../config/server.properties
+
 
 from kafka import KafkaProducer
 import io
@@ -18,7 +24,7 @@ topicName = 'Bank_Transaction'
 producer = KafkaProducer(bootstrap_servers=bootstrap_servers)
 
 # Get the schema to use to serialize the message
-schema = Parse(open('schema_transaction.avsc', "rb").read())
+schema = Parse(open("schema_transaction.avsc", "rb").read())
 
 # serialize the message data using the schema
 buf = io.BytesIO()
@@ -46,8 +52,3 @@ producer.flush()
 
 
 
-#iniciar zookeeper
-# ./zookeeper-server-start.sh ../config/zookeeper.properties
-
-#iniciar broker
-# ./kafka-server-start.sh ../config/server.properties
