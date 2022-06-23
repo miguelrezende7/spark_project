@@ -6,7 +6,7 @@
 # producer.flush()
 
 
-#iniciar zookeeper
+#  iniciar zookeeper
 # ./zookeeper-server-start.sh ../config/zookeeper.properties
 
 #iniciar broker
@@ -17,6 +17,7 @@ from kafka import KafkaProducer
 import io
 from avro.schema import Parse
 from avro.io import DatumWriter, DatumReader, BinaryEncoder, BinaryDecoder
+from datetime import datetime
 
 # Create a Kafka client ready to produce messages
 bootstrap_servers = ['localhost:9092']
@@ -31,7 +32,7 @@ buf = io.BytesIO()
 encoder = BinaryEncoder(buf)
 writer = DatumWriter(writer_schema=schema)
 # writer.write({"name": "Ben", "favorite_number": 7, "favorite_color": "red"}, encoder)
-writer.write({"client_code": "001", "agency": "001", "operation_value": 5.00 , "operation_type":"Deposity","date":"04/06/2022","account_balance":505.00}, encoder)
+writer.write({"client_code": "002", "agency": "001", "operation_value": 6000.00 , "operation_type":"Deposity","date":str(datetime.now()),"account_balance":505.00}, encoder)
 # writer.write({"name": "Alyssa", "favorite_number": 256}, encoder)
 buf.seek(0)
 message_data = (buf.read())
